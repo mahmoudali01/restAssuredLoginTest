@@ -19,12 +19,6 @@ public class Credentials {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                "   \"email\":\""+email+"\",\n" +
-                "   \"password\":\""+password+"\"\n" +
-                "}";
-    }
+
 
 }
