@@ -1,5 +1,6 @@
 package api.endpoints;
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -9,7 +10,7 @@ public class EndPoints {
         RestAssured.baseURI = Routes.base_uri;
 
         Response response = RestAssured.
-                given()
+                given().filter(new AllureRestAssured())
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
                 .and()
@@ -18,7 +19,6 @@ public class EndPoints {
                 .post(Routes.post_uri)
                 .then().log().all()
                 .extract().response();
-        response.jsonPath().getString("token");
         return response;
 
     }
@@ -28,7 +28,7 @@ public class EndPoints {
         RestAssured.baseURI = Routes.base_uri;
 
         Response response = RestAssured.
-                given()
+                given().filter(new AllureRestAssured())
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
                 .header("authorization", "Bearer " + token)
