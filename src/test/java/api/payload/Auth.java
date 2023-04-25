@@ -1,6 +1,6 @@
 package api.payload;
 
-public class Credentials {
+public class Auth {
     private String email;
     private String password;
 

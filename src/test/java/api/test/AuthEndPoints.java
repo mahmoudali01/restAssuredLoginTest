@@ -1,17 +1,15 @@
 package api.test;
 
 import api.endpoints.EndPoints;
-import api.payload.Credentials;
+import api.payload.Auth;
 import com.google.gson.Gson;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.restassured.response.Response;
-import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,15 +17,15 @@ import static org.hamcrest.Matchers.*;
 
 @Epic("REST API Test Login  using TestNG")
 @Feature("Test Login With null and correct Bearer token")
-public class TestEndPoints {
-    static Credentials credentials;
+public class AuthEndPoints {
+    static Auth auth;
     String token;
 
     @BeforeSuite
     public static void setup() {
-        credentials = new Credentials();
-        credentials.setEmail("merchant@foodics.com");
-        credentials.setPassword("123456");
+        auth = new Auth();
+        auth.setEmail("merchant@foodics.com");
+        auth.setPassword("123456");
     }
 
     @Test(priority = 1, description = "Login with Bearer token equal null")
@@ -50,8 +48,8 @@ public class TestEndPoints {
     @Description("Test Description : Verify that message is returned when make request with valid email and password")
     public void getToken() {
         Map<String, Object> bodyParams = new HashMap<String, Object>();
-        bodyParams.put("email", credentials.getEmail());
-        bodyParams.put("password", credentials.getPassword());
+        bodyParams.put("email", auth.getEmail());
+        bodyParams.put("password", auth.getPassword());
         String payload = new Gson().toJson(bodyParams);
         Response response = EndPoints.getToken(payload);
         token = response.jsonPath().getString("token");

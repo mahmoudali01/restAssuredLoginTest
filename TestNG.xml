@@ -3,7 +3,7 @@
 <suite name="Login">
     <test name="Login Test">
         <classes>
-            <class name="api.test.TestEndPoints"/>
+            <class name="api.test.AuthEndPoints"/>
         </classes>
     </test>
 </suite>
