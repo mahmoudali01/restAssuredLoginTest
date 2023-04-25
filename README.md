@@ -4,7 +4,7 @@
 
 1. JDK 1.8+ (make sure Java class path is set)
 2. Maven (make sure .m2 class path is set)
-3. install the following plugins:
+3. install maven plugin
 
 **How to use this repository**
 
