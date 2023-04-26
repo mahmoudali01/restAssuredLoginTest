@@ -55,6 +55,4 @@ public class EKYC {
     public void setIs_email_verified(Boolean is_email_verified) {
         this.is_email_verified = is_email_verified;
     }
-
-
 }

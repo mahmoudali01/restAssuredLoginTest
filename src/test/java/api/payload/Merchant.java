@@ -1,7 +1,7 @@
 package api.payload;
 
 public class Merchant {
-    private  String id;
+    private String id;
     private String reference;
     private int business_type;
     private String business_reference;
@@ -26,7 +26,7 @@ public class Merchant {
     private String updated_at;
 
 
-    public  String getId() {
+    public String getId() {
         return id;
     }
 
@@ -209,7 +209,5 @@ public class Merchant {
     public void setUpdated_at(String updated_at) {
         this.updated_at = updated_at;
     }
-
-
 
 }
