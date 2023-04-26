@@ -10,6 +10,7 @@ import io.qameta.allure.Story;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +20,9 @@ import static org.hamcrest.Matchers.*;
 @Feature("Test Login With null and correct Bearer token")
 public class AuthEndPoints {
     static Auth auth;
+//    User user;
+//    Merchant merchant;
+//    EKYC ekyc;
     String token;
 
     @BeforeSuite
@@ -66,6 +70,61 @@ public class AuthEndPoints {
     @Description("Test Description : Verify that user can login with valid token")
     public void loginWithToken() {
         Response response = EndPoints.login(token);
+        //setting user values
+//        user = new User();
+//        merchant = new Merchant();
+//        ekyc = new EKYC();
+//        user.setOnboard_request(response.jsonPath().getString("user.onboard_request"));
+//        merchant.setId(response.jsonPath().getString("user.merchant.id"));
+//        merchant.setReference(response.jsonPath().getString("user.merchant.reference"));
+//        merchant.setBusiness_type(Integer.parseInt(response.jsonPath().getString("user.merchant.business_type")));
+//        merchant.setBusiness_reference(response.jsonPath().getString("user.merchant.business_reference"));
+//        merchant.setSolo_id(response.jsonPath().getString("user.merchant.solo_id"));
+//        merchant.setBusiness_name(response.jsonPath().getString("user.merchant.business_name"));
+//        merchant.setBusiness_name_localized(response.jsonPath().getString("user.merchant.business_name_localized"));
+//        merchant.setCommercial_registration(response.jsonPath().getString("user.merchant.commercial_registration"));
+//        merchant.setCommercial_registration_expiration(response.jsonPath().getString("user.merchant.commercial_registration_expiration"));
+//        merchant.setUnified_national_number(response.jsonPath().getString("user.merchant.unified_national_number"));
+//        merchant.setMcc(Integer.parseInt(response.jsonPath().getString("user.merchant.mcc")));
+//        merchant.setSettlement_enabled(Boolean.getBoolean(response.jsonPath().getString("user.merchant.settlement_enabled")));
+//        merchant.setSettlement_disabled_reason(response.jsonPath().getString("user.merchant.settlement_disabled_reason"));
+//        merchant.setTotal_terminals(Integer.parseInt(response.jsonPath().getString("user.merchant.total_terminals")));
+//        merchant.setActive_terminals(Integer.parseInt(response.jsonPath().getString("user.merchant.active_terminals")));
+//        merchant.setBeneficiary_name(response.jsonPath().getString("user.merchant.beneficiary_name"));
+//        merchant.setMada_fee(response.jsonPath().getString("user.merchant.mada_fee"));
+//        merchant.setCredit_card_fee(response.jsonPath().getString("user.merchant.credit_card_fee"));
+//        merchant.setAmex_fee(response.jsonPath().getString("user.merchant.amex_fee"));
+//        merchant.setIs_active(Boolean.getBoolean(response.jsonPath().getString("user.merchant.is_active")));
+//        merchant.setIs_approved(Boolean.getBoolean(response.jsonPath().getString("user.merchant.is_approved")));
+//        merchant.setCreated_at(response.jsonPath().getString("user.merchant.created_at"));
+//        merchant.setUpdated_at(response.jsonPath().getString("user.merchant.updated_at"));
+//        user.setMerchant(merchant);
+//        user.setId(response.jsonPath().getString("user.id"));
+//        user.setName(response.jsonPath().getString("user.name"));
+//        user.setNational_id(response.jsonPath().getString("user.national_id"));
+//        user.setEmail(response.jsonPath().getString("user.email"));
+//        user.setMobile_dial_code(response.jsonPath().getString("user.mobile_dial_code"));
+//        user.setMobile_number(response.jsonPath().getString("user.mobile_number"));
+//        user.setBirth_date(response.jsonPath().getString("user.birth_date"));
+//        user.setGender(response.jsonPath().getString("user.gender"));
+//        user.setPreferred_language(response.jsonPath().getString("user.preferred_language"));
+//        ekyc.setIs_suspicious(Boolean.getBoolean(response.jsonPath().getString("user.eKYC.is_suspicious")));
+//        ekyc.setIs_completed(Boolean.getBoolean(response.jsonPath().getString("user.eKYC.is_completed")));
+//        ekyc.setIs_mobile_number_verified(Boolean.getBoolean(response.jsonPath().getString("user.eKYC.is_mobile_number_verified")));
+//        ekyc.setIs_national_id_verified(Boolean.getBoolean(response.jsonPath().getString("user.eKYC.is_national_id_verified")));
+//        ekyc.setIs_commercial_registration_verified(Boolean.getBoolean(response.jsonPath().getString("user.eKYC.is_commercial_registration_verified")));
+//        ekyc.setIs_email_verified(Boolean.getBoolean(response.jsonPath().getString("user.eKYC.is_email_verified")));
+//        user.setEkyc(ekyc);
+//        user.setBirth_country(response.jsonPath().getString("user.birth_country"));
+//        user.setResidence_country(response.jsonPath().getString("user.residence_country"));
+//        user.setBirth_country(response.jsonPath().getString("user.birth_country"));
+//        user.setSource_of_income(response.jsonPath().getString("user.source_of_income"));
+//        user.setProfession(response.jsonPath().getString("user.profession"));
+//        user.setIs_owner(Boolean.getBoolean(response.jsonPath().getString("user.is_owner")));
+//        user.setIs_contact_user(Boolean.getBoolean(response.jsonPath().getString("user.is_contact_user")));
+//        user.setIs_active(Boolean.getBoolean(response.jsonPath().getString("user.is_active")));
+//        user.setCreated_at(response.jsonPath().getString("user.created_at"));
+
         response.then()
                 .statusCode(200)
                 .and()
@@ -90,8 +149,8 @@ public class AuthEndPoints {
                 .body("user.merchant.active_terminals", equalTo(87))
                 .body("user.merchant.beneficiary_name", equalTo("ABDULLAH KHAWAJI"))
                 .body("user.merchant.mada_fee", equalTo("2% + 2 SAR"))
-                .body("user.merchant.credit_card_fee",equalTo("0% + 0 SAR"))
-                .body("user.merchant.amex_fee",equalTo("0% + 0 SAR"))
+                .body("user.merchant.credit_card_fee", equalTo("0% + 0 SAR"))
+                .body("user.merchant.amex_fee", equalTo("0% + 0 SAR"))
                 .body("user.merchant.is_active", equalTo(true))
                 .body("user.merchant.is_approved", equalTo(true))
                 .body("user.merchant.created_at", equalTo("2020-03-17 16:03:31"))
@@ -119,6 +178,7 @@ public class AuthEndPoints {
                 .body("user.is_contact_user", equalTo(true))
                 .body("user.is_active", equalTo(true))
                 .body("user.created_at", equalTo("2021-02-14 09:18:20"));
+
     }
 
 }
